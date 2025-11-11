@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Happy Birthday Honey 🎈</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            background: radial-gradient(circle at top left, #ffb6c1, #ffdde1);
+            font-family: 'Comic Sans MS', cursive;
+            color: #fff;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-top: 60px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: glow 4s ease-in-out infinite alternate;
+        }
+        
+        p.text {
+            color: #d363ce;
+            font-size: 15px;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        
+        p.my-text {
+            color: #4c8ef0;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff6b6b;
+            }
+            to {
+                text-shadow: 0 0 20px #ff9ff3, 0 0 30px #feca57;
+            }
+        }
+        
+        button {
+            background: #ff69b4;
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+            position: relative;
+            z-index: 10;
+        }
+        
+        button:hover {
+            background-color: #ff1493;
+        }
+        
+        .photo-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 40px;
+            z-index: 5;
+            position: relative;
+        }
+        
+        .photo-gallery img {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s;
+        }
+        
+        .photo-gallery img:hover {
+            transform: scale(1.1);
+        }
+        /* Confetti Canvas */
+        
+        canvas#confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        /* 🎈 Balloon */
+        
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #fff 10%, var(--color) 70%);
+            border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+            /* makes it more balloon-like */
+            animation: floatUp 8s linear infinite;
+            opacity: 0.9;
+            z-index: 1;
+        }
+        /* Knot */
+        
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 8px;
+            background: var(--color);
+            border-radius: 30% 30% 60% 60%;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+        /* String */
+        
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1.5px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) scale(1.1);
+                opacity: 0;
+            }
+        }
+        /* 🎆 Crackers (fireworks) */
+        
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: radial-gradient(circle, yellow, transparent);
+            border-radius: 50%;
+            animation: explode 1.2s ease-out forwards;
+        }
+        
+        @keyframes explode {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="confetti"></canvas>
+
+    <h1>🎂 Happy Birthday, Honey!!! 🎂</h1>
+    <p class="text"> You’re the sparkle in every celebration and the joy in every moment. Thank you for always being there 💖</p>
+
+    <div class="photo-gallery">
+        <img src="1.jpg" Honey 1 ">
+        <img src="4.jpg "Honey 2 ">
+        <img src="3.jpg" Honey 3 ">
+        <img src="4.jpg.jpg "Honey 4 ">
+    </div>
+
+    <p class="my-text">
+        শুভ জন্মদিন প্রিয় honey. আজ তোমার জন্মদিন খুব সুন্দর কাটুক। তোমার সফলতার কামনা করি। আর ধন্যবাদ সাথে থাকার জন্য। I will always there for your support.
+    </p>
+
+    <audio id="music " src="./music.mp3" autoplay loop></audio>
+
+    <script>
+        // 🎉 CONFETTI EFFECT
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let confettis = [];
+        for (let i = 0; i < 150; i++) {
+            confettis.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height - canvas.height,
+                r: Math.random() * 6 + 4,
+                d: Math.random() * 50,
+                color: `hsl(${Math.random() * 360}, 70%, 60%)`
+            });
+        }
+
+        let angle = 0;
+
+        function drawConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confettis.forEach((c) => {
+                ctx.beginPath();
+                ctx.fillStyle = c.color;
+                ctx.fillRect(c.x, c.y, c.r, c.r);
+            });
+            updateConfetti();
+            requestAnimationFrame(drawConfetti);
+        }
+
+        function updateConfetti() {
+            angle += 0.01;
+            confettis.forEach((c) => {
+                c.y += Math.cos(angle + c.d) + 1 + c.r / 2;
+                c.x += Math.sin(angle);
+                if (c.y > canvas.height) {
+                    c.y = -10;
+                    c.x = Math.random() * canvas.width;
+                }
+            });
+        }
+        drawConfetti();
+
+        // 🎈 BALLOONS
+        const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#5f27cd', '#ff9ff3'];
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+            balloon.style.animationDuration = (6 + Math.random() * 5) + 's';
+            document.body.appendChild(balloon);
+            setTimeout(() => balloon.remove(), 10000);
+        }
+        setInterval(createBalloon, 700);
+
+        // 🎆 CRACKERS (fireworks)
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            firework.style.left = Math.random() * window.innerWidth + 'px';
+            firework.style.top = Math.random() * (window.innerHeight / 2) + 'px';
+            firework.style.background = `radial-gradient(circle, hsl(${Math.random()*360},80%,60%), transparent))`;
+            document.body.appendChild(firework);
+            setTimeout(() => firework.remove(), 1200);
+        }
+        setInterval(createFirework, 80);
+
+
+
+        // 🎨 Resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click for a Surprise</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: radial-gradient(circle at top, #111 0%, #000 100%);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 0 0 10px red;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from {
+                text-shadow: 0 0 10px red;
+            }
+            to {
+                text-shadow: 0 0 25px crimson;
+            }
+        }
+        
+        button {
+            background: transparent;
+            color: red;
+            border: 2px solid red;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        button:hover {
+            background: red;
+            color: #000;
+            box-shadow: 0 0 20px red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Click here for the Surprise...</h1>
+    <a href="second-page.html"><button >Click Here</button>
+</a>
+    <!-- <script>
+function askName() {
+    let userName = prompt("What's your name?");
+    if (userName === null || userName.trim() === "") {
+        alert("Please enter something...");
+        return;
+    }
+
+    if (userName.trim().toLowerCase() === "honey") {
+        window.location.href = "C:\Users\soura\OneDrive\Desktop\bd\second-page.html"
+    } else {
+        alert("This isn't the name. Please put the name your closest friend calls you.");
+    }
+}
+</script> -->
+
+</body>
+
+</html>
