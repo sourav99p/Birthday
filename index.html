@@ -1,79 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click for a Surprise</title>
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Courier New', monospace;
-            text-align: center;
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-image: radial-gradient(circle at top, #111 0%, #000 100%);
-        }
-        
-        h1 {
-            font-size: 2.5em;
-            text-shadow: 0 0 10px red;
-            animation: pulse 2s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            from {
-                text-shadow: 0 0 10px red;
-            }
-            to {
-                text-shadow: 0 0 25px crimson;
-            }
-        }
-        
-        button {
-            background: transparent;
-            color: red;
-            border: 2px solid red;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        
-        button:hover {
-            background: red;
-            color: #000;
-            box-shadow: 0 0 20px red;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 Birthday Surprise 💞</title>
+  <style>
+    /* ---------- Background ---------- */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at top left, #ffdde1, #ee9ca7, #fcbad3, #a1c4fd);
+      background-size: 300% 300%;
+      animation: bgFlow 15s ease-in-out infinite;
+    }
+
+    @keyframes bgFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ---------- Romantic Title ---------- */
+    /* ---------- Romantic Golden Title ---------- */
+
+/* ---------- Shining Steel Romantic Title ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4em;
+  font-weight: 400;
+  text-align: center;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 0;
+  text-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.4),
+    0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+    /* ---------- Button ---------- */
+    button {
+      margin-top: 25px;
+      padding: 14px 40px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 600;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #ff758c, #ff7eb3);
+      box-shadow: 0 0 25px rgba(255, 118, 166, 0.5);
+      transition: all 0.4s ease;
+      z-index: 3;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(90deg, #fcb045, #fd1d1d, #833ab4);
+      box-shadow: 0 0 35px rgba(255, 204, 229, 0.9);
+    }
+
+    /* ---------- Flowers ---------- */
+    .flower {
+      position: absolute;
+      top: -10px;
+      font-size: 20px;
+      animation: fall linear infinite;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* ---------- Floating Hearts ---------- */
+    .heart {
+      position: absolute;
+      color: rgba(255, 105, 180, 0.8);
+      font-size: 18px;
+      top: 100%;
+      animation: floatUp linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <h1>Click here for the Surprise...</h1>
-    <a href="second-page.html"><button >Click Here</button>
-</a>
-    <!-- <script>
-function askName() {
-    let userName = prompt("What's your name?");
-    if (userName === null || userName.trim() === "") {
-        alert("Please enter something...");
-        return;
-    }
+  <h1> Click Here for Surprise</h1>
+  <a href="second-page.html"><button>Open Surprise 🎁</button></a>
 
-    if (userName.trim().toLowerCase() === "honey") {
-        window.location.href = "C:\Users\soura\OneDrive\Desktop\bd\second-page.html"
-    } else {
-        alert("This isn't the name. Please put the name your closest friend calls you.");
+<script>
+    // Floating flower petals
+    const flowers = ['🌸', '🌺', '🌼', '💮', '🌷', '🌻'];
+    for (let i = 0; i < 40; i++) {
+      const flower = document.createElement('div');
+      flower.classList.add('flower');
+      flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.fontSize = (15 + Math.random() * 20) + 'px';
+      flower.style.animationDuration = 4 + Math.random() * 6 + 's';
+      flower.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(flower);
     }
-}
-</script> -->
+  </script>
+  </script>
 
 </body>
-
 </html>
